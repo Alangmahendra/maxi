@@ -3,16 +3,16 @@ require('dotenv').config()
 class Pesan {
     static sendmail(req,res){
         const data = req.body
-
+        console.log('====>',data)
         sgMail.setApiKey(process.env.SENDGRID_KEY)
         const maximo = {
-                to: 'info@coffeeshopmaximo.com',
+                to: 'alangmahendra@gmail.com',
                 from: 'noreply@coffeeshopmaximo.com',
                 subject: `${data.email} - Melakukan Pesanan`,
                 text: 'COFFEESHOPMAXIMO.COM',
                 html: `
                     <div>
-                    
+                    <h1>INGAT TANGGAL +1 (jika tanggal acara : 2018-11-29T17:00:00.000Z maka tanggal yg di input user adalah : 2018-11-30T17:00:00.000Z,bug ini akan segera diperbaiki,format tanggal adalah : tttt/bb/hh </h1>
                 <table border>
                 <thead>
                     <tr>
@@ -51,6 +51,12 @@ class Pesan {
                     <tr>
                     <td>Tangal Acara</td>
                     <td>${data.tanggal}</td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                    <td>Waktu Acara</td>
+                    <td>${data.jam}</td>
                     </tr>
                 </tbody>
                 <tbody>
