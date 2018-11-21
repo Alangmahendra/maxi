@@ -6,9 +6,9 @@ class Pesan {
 
         sgMail.setApiKey(process.env.SENDGRID_KEY)
         const maximo = {
-                to: 'alangmahendra@gmail.com',
+                to: 'info@coffeeshopmaximo.com',
                 from: 'noreply@coffeeshopmaximo.com',
-                subject: `${data.nama} - Melakukan Pesanan`,
+                subject: `${data.email} - Melakukan Pesanan`,
                 text: 'COFFEESHOPMAXIMO.COM',
                 html: `
                     <div>
@@ -23,6 +23,12 @@ class Pesan {
                         </th>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr>
+                    <td>Email Pemesan</td>
+                    <td>${data.email}</td>
+                    </tr>
+                </tbody>
                 <tbody>
                     <tr>
                     <td>Nama Pemesan</td>
@@ -45,6 +51,12 @@ class Pesan {
                     <tr>
                     <td>Tangal Acara</td>
                     <td>${data.tanggal}</td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                    <td>Hari Acara</td>
+                    <td>${data.hari}</td>
                     </tr>
                 </tbody>
                 <tbody>
