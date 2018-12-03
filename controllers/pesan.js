@@ -1,9 +1,15 @@
 var sgMail = require('@sendgrid/mail')
 require('dotenv').config()
+var moment = require('moment')
+
 class Pesan {
     static sendmail(req,res){
         const data = req.body
         console.log('====>',data)
+        const split = data.tanggal.split(' ')
+        const splice = split.splice(1,3)
+        const date = splice.join(' ')
+        // console.log(splice.join(' '))
         sgMail.setApiKey(process.env.SENDGRID_KEY)
         const maximo = {
                 to: 'alangmahendra@gmail.com',
@@ -12,7 +18,6 @@ class Pesan {
                 text: 'COFFEESHOPMAXIMO.COM',
                 html: `
                     <div>
-                    <h1>INGAT TANGGAL +1 (jika tanggal acara : 2018-11-29T17:00:00.000Z maka tanggal yg di input user adalah : 2018-11-30T17:00:00.000Z,bug ini akan segera diperbaiki,format tanggal adalah : tttt/bb/hh </h1>
                 <table border>
                 <thead>
                     <tr>
@@ -50,7 +55,7 @@ class Pesan {
                 <tbody>
                     <tr>
                     <td>Tangal Acara</td>
-                    <td>${data.tanggal}</td>
+                    <td>${date}</td>
                     </tr>
                 </tbody>
                 <tbody>
